@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: ${server.profile:local}
+  batch:
+    job:
+      name: ${job.name:NONE}
+logging:
+  pattern:
+    console: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+  level:
+    root: info
+    com.juno.hyugibatch: debug
+--- # local
+spring:
+  config:
+    activate:
+      on-profile: local
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:hyugi
+    username: sa
+    password:
