@@ -1,5 +1,6 @@
 package com.juno.hyugibatch.job;
 
+import com.juno.hyugibatch.repository.TestRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -21,7 +22,6 @@ public class TestJob {
         return new JobBuilder("testSimpleJob", jobRepository)
                 .start(testStep)
                 .build();
-
     }
 
     @Bean
@@ -31,11 +31,12 @@ public class TestJob {
     }
 
     @Bean
-    public Tasklet testTasklet(){
+    public Tasklet testTasklet(TestRepository testRepository){
         return ((contribution, chunkContext) -> {
             System.out.println("테스트1");
-
+            testRepository.save();
             return RepeatStatus.FINISHED;
         });
     }
 }
+
