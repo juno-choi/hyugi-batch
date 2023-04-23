@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  hyugi-batch:
+    container_name: hyugi-batch
+    build: .
+    environment:
+      - TZ=Asia/Seoul
+      - db.url=jdbc:mysql://master/hyugi
+      - db.username=juno
+      - db.password=password
+networks:
+  default:
+    external:
+      name: hyugi
