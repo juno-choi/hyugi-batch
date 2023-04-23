@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +45,7 @@ public class RestAreaInfoJob {
     }
 
     @Bean
+    @Transactional
     public Tasklet restAreaTasklet(JobRepository jobRepository){
         return (contribution, chunkContext) -> {
             String key = env.getProperty("rest-area.key");

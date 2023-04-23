@@ -7,7 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HyugiBatchApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HyugiBatchApplication.class, args);
+        System.exit(
+            SpringApplication.exit(
+                SpringApplication.run(HyugiBatchApplication.class, args)
+            )
+        );
     }
 
 }
