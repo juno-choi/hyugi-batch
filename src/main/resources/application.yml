@@ -10,6 +10,11 @@ logging:
   level:
     root: info
     com.juno.hyugibatch: debug
+
+rest-area:
+  url: "http://data.ex.co.kr/openapi"
+  key: ${rest.api.key:6066617477}
+
 --- # local
 spring:
   config:
